@@ -1,0 +1,174 @@
+body {
+  display: flex;
+  margin: 0;
+}
+
+.background {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.weather-app {
+  color: rgba(41, 39, 39, 0.884);
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+  border: 1px solid;
+  border-radius: 20px;
+  border-color: transparent;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  background-color: rgba(202, 209, 211, 0.9);
+  padding: 30px;
+  margin-top: 122px;
+  max-width: 800px;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-form {
+  flex: 1;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.input-field {
+  flex: 1;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.search-btn {
+  flex: 1;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  max-width: 20%;
+}
+
+.location-btn {
+  flex: 1;
+  padding: 7px;
+  margin: 0 auto;
+  border: 1 solid;
+  border-color: transparent;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  background-color: #c9d1d3;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 15px;
+  max-width: max-content;
+  color: rgba(41, 39, 39, 0.884);
+  text-align: center;
+}
+
+.mid-section {
+  margin: 50px 0px 50px 0px;
+}
+
+.location {
+  position: relative;
+  left: 15px;
+  text-align: left;
+}
+
+.city {
+  font-weight: 700;
+  font-size: 35px;
+}
+
+ul.currentDate {
+  position: relative;
+  top: -6px;
+  left: 2px;
+  font-size: 14px;
+  list-style: none;
+  padding: 0;
+}
+
+.today {
+  position: relative;
+  left: 15px;
+  text-align: left;
+}
+
+.temperature {
+  font-weight: 700;
+  font-size: 35px;
+  margin: 5px 0 0 0;
+}
+
+.units {
+  position: relative;
+  top: -14px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.celsius {
+  text-decoration: none;
+}
+
+.celsius:hover {
+  text-decoration: underline;
+}
+
+.fahrenheit {
+  text-decoration: none;
+}
+
+.fahrenheit:hover {
+  text-decoration: underline;
+}
+
+ul.data {
+  list-style: none;
+  padding: 0;
+  font-size: 12px;
+}
+
+.weather-icon {
+  width: 110px;
+}
+
+.weather-description {
+  font-size: 12px;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast {
+  flex: 1;
+  text-align: center;
+}
+
+.forecast-day {
+  font-weight: bolder;
+  margin: 5px;
+}
+
+.forecast-icon {
+  height: 70px;
+  padding: 10px;
+}
+
+.forecast-max-temp {
+  font-size: 13px;
+}
+
+.forecast-min-temp {
+  font-size: 13px;
+}
