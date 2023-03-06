@@ -172,3 +172,11 @@ ul.data {
 .forecast-min-temp {
   font-size: 13px;
 }
+
+.code-link {
+  margin-top: 10px;
+  font-size: small;
+  display: block;
+  position: relative;
+  right: 280px;
+}
