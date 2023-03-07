@@ -75,22 +75,27 @@ function convertToCelsius(event) {
 }
 
 function showWeatherInfo(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#feels-like").innerHTML = `Feels like: ${Math.round(
+  let city = document.querySelector("#city");
+  let temperature = document.querySelector("#temperature");
+  let feelsLike = document.querySelector("#feels-like");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+  let description = document.querySelector("#weather-description");
+  let icon = document.querySelector("#weather-icon");
+
+  city.innerHTML = response.data.name;
+  temperature.innerHTML = Math.round(response.data.main.temp);
+  feelsLike.innerHTML = `Feels like: ${Math.round(
     response.data.main.feels_like
   )} C°`;
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity} %`;
-  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
-    response.data.wind.speed
-  )} m / s`;
-  document.querySelector(
-    "#weather-description"
-  ).innerHTML = `${response.data.weather[0].description}`;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity} %`;
+  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m / s`;
+  description.innerHTML = `${response.data.weather[0].description}`;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 //showDate function
