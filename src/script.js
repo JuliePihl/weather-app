@@ -1,7 +1,7 @@
 search("Copenhagen");
 
 function search(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=708f30e015d511ca8fcc8b34a81d39cd`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=4f8936d039ct62ob3b4f9d73a4bb6536&units=metric`;
   axios.get(apiUrl).then(showWeatherInfo);
 }
 
@@ -12,7 +12,7 @@ function handleSubmit(event) {
 }
 
 function searchMyLocation(position) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=708f30e015d511ca8fcc8b34a81d39cd`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=4f8936d039ct62ob3b4f9d73a4bb6536`;
   axios.get(apiUrl).then(showWeatherInfo);
 }
 
@@ -85,19 +85,19 @@ function showWeatherInfo(response) {
   let description = document.querySelector("#weather-description");
   let icon = document.querySelector("#weather-icon");
 
-  city.innerHTML = response.data.name;
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  city.innerHTML = response.city;
+  temperature.innerHTML = Math.round(response.temperature.current);
   feelsLike.innerHTML = `Feels like: ${Math.round(
-    response.data.main.feels_like
+    response.temperature.feels_like
   )} C°`;
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity} %`;
-  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m / s`;
-  description.innerHTML = `${response.data.weather[0].description}`;
+  humidity.innerHTML = `Humidity: ${response.temperature.humidity} %`;
+  wind.innerHTML = `Wind: ${Math.round(response.wind.speed)} m / s`;
+  description.innerHTML = `${response.condition.description}`;
   icon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.condition.icon_url}.png`
   );
-  icon.setAttribute("alt", response.data.weather[0].description);
+  icon.setAttribute("alt", response.condition.description);
 }
 
 //showDate function
