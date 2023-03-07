@@ -1,3 +1,5 @@
+search("Copenhagen");
+
 function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=708f30e015d511ca8fcc8b34a81d39cd`;
   axios.get(apiUrl).then(showWeatherInfo);
