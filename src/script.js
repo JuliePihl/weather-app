@@ -85,19 +85,19 @@ function showWeatherInfo(response) {
   let description = document.querySelector("#weather-description");
   let icon = document.querySelector("#weather-icon");
 
-  city.innerHTML = response.city;
-  temperature.innerHTML = Math.round(response.temperature.current);
+  city.innerHTML = response.data.city;
+  temperature.innerHTML = Math.round(response.data.temperature.current);
   feelsLike.innerHTML = `Feels like: ${Math.round(
-    response.temperature.feels_like
+    response.data.temperature.feels_like
   )} C°`;
-  humidity.innerHTML = `Humidity: ${response.temperature.humidity} %`;
-  wind.innerHTML = `Wind: ${Math.round(response.wind.speed)} m / s`;
-  description.innerHTML = `${response.condition.description}`;
+  humidity.innerHTML = `Humidity: ${response.data.temperature.humidity} %`;
+  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m / s`;
+  description.innerHTML = `${response.data.condition.description}`;
   icon.setAttribute(
     "src",
-    `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.condition.icon_url}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
-  icon.setAttribute("alt", response.condition.description);
+  icon.setAttribute("alt", response.data.condition.description);
 }
 
 //showDate function
