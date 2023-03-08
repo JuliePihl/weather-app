@@ -10,7 +10,7 @@ function handleSubmit(event) {
 }
 
 function searchMyLocation(position) {
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=4f8936d039ct62ob3b4f9d73a4bb6536`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&units=metric&key=4f8936d039ct62ob3b4f9d73a4bb6536`;
   axios.get(apiUrl).then(showWeatherInfo);
 }
 
@@ -62,7 +62,8 @@ function showTime(now) {
   return `${hour}:${minutes}`;
 }
 
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
 
@@ -109,6 +110,11 @@ function convertToCelsius(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function getForecast(coordinates) {
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&units=metric&key=4f8936d039ct62ob3b4f9d73a4bb6536`;
+  axios.get(apiUrl).then(showForecast);
+}
+
 function showWeatherInfo(response) {
   let city = document.querySelector("#city");
   let temperature = document.querySelector("#temperature");
@@ -133,6 +139,8 @@ function showWeatherInfo(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   icon.setAttribute("alt", response.data.condition.description);
+
+  getForecast(response.data.coordinates);
 }
 
 //showDate function
@@ -164,4 +172,3 @@ locationButton.addEventListener("click", getMyLocation);
 let celsiusTemperature = null;
 
 search("Copenhagen");
-showForecast();
