@@ -1,5 +1,3 @@
-search("Copenhagen");
-
 function search(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=4f8936d039ct62ob3b4f9d73a4bb6536&units=metric`;
   axios.get(apiUrl).then(showWeatherInfo);
@@ -67,13 +65,18 @@ function showTime(now) {
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 45;
+  celsiuslink.classList.remove("active");
+  fahrenheitlink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function convertToCelsius(event) {
   event.preventDefault();
+  celsiuslink.classList.add("active");
+  fahrenheitlink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 7;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 function showWeatherInfo(response) {
@@ -85,8 +88,10 @@ function showWeatherInfo(response) {
   let description = document.querySelector("#weather-description");
   let icon = document.querySelector("#weather-icon");
 
+  celsiusTemperature = response.data.temperature.current;
+
   city.innerHTML = response.data.city;
-  temperature.innerHTML = Math.round(response.data.temperature.current);
+  temperature.innerHTML = Math.round(celsiusTemperature);
   feelsLike.innerHTML = `Feels like: ${Math.round(
     response.data.temperature.feels_like
   )} C°`;
@@ -125,3 +130,7 @@ searchForm.addEventListener("submit", handleSubmit);
 // getMyLocation function
 let locationButton = document.querySelector("#location-btn");
 locationButton.addEventListener("click", getMyLocation);
+
+let celsiusTemperature = null;
+
+search("Copenhagen");
