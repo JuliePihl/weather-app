@@ -62,6 +62,36 @@ function showTime(now) {
   return `${hour}:${minutes}`;
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+      <div class="forecast-day">${day}</div>
+      <img
+        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png"
+        alt=""
+        width="42"
+      />
+      <div class="forecast-temperatures">
+        <span class="forecast-max-temp"> 8° </span>
+          |
+        <span class="forecast-min-temp"> 2° </span>
+      </div>
+    </div>
+    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -134,3 +164,4 @@ locationButton.addEventListener("click", getMyLocation);
 let celsiusTemperature = null;
 
 search("Copenhagen");
+showForecast();

@@ -153,35 +153,6 @@ ul.data {
   font-size: 12px;
 }
 
-.bottom-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.forecast {
-  flex: 1;
-  text-align: center;
-}
-
-.forecast-day {
-  font-weight: bolder;
-  margin: 5px;
-}
-
-.forecast-icon {
-  height: 70px;
-  padding: 10px;
-}
-
-.forecast-max-temp {
-  font-size: 13px;
-}
-
-.forecast-min-temp {
-  font-size: 13px;
-}
-
 .code-link {
   margin-top: 10px;
   font-size: small;
