@@ -72,8 +72,6 @@ function formatDay(timestamp) {
 
 function showForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data.daily);
-
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -108,23 +106,6 @@ function showForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celsiuslink.classList.remove("active");
-  fahrenheitlink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  celsiuslink.classList.add("active");
-  fahrenheitlink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 function getForecast(coordinates) {
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&units=metric&key=4f8936d039ct62ob3b4f9d73a4bb6536`;
   axios.get(apiUrl).then(showForecast);
@@ -145,9 +126,9 @@ function showWeatherInfo(response) {
   temperature.innerHTML = Math.round(celsiusTemperature);
   feelsLike.innerHTML = `Feels like: ${Math.round(
     response.data.temperature.feels_like
-  )} C°`;
+  )} °C`;
   humidity.innerHTML = `Humidity: ${response.data.temperature.humidity} %`;
-  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m / s`;
+  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m/s`;
   description.innerHTML = `${response.data.condition.description}`;
   icon.setAttribute(
     "src",
@@ -168,14 +149,6 @@ let now = new Date();
 let time = document.querySelector("#time");
 time.innerHTML = showTime(now);
 
-//convertToFahrenheit function
-let fahrenheitlink = document.querySelector("#fahrenheit-link");
-fahrenheitlink.addEventListener("click", convertToFahrenheit);
-
-//convertToCelsius function
-let celsiuslink = document.querySelector("#celsius-link");
-celsiuslink.addEventListener("click", convertToCelsius);
-
 //handleSubmit function
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
@@ -183,7 +156,5 @@ searchForm.addEventListener("submit", handleSubmit);
 // getMyLocation function
 let locationButton = document.querySelector("#location-btn");
 locationButton.addEventListener("click", getMyLocation);
-
-let celsiusTemperature = null;
 
 search("Copenhagen");

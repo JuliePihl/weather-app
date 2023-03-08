@@ -114,31 +114,6 @@ ul.currentDate {
   font-weight: 400;
 }
 
-.celsius {
-  text-decoration: none;
-}
-
-.celsius:hover {
-  text-decoration: underline;
-}
-.active {
-  color: rgba(41, 39, 39, 0.884);
-  cursor: default;
-}
-
-.active:hover {
-  text-decoration: none;
-  color: rgba(41, 39, 39, 0.884);
-}
-
-.fahrenheit {
-  text-decoration: none;
-}
-
-.fahrenheit:hover {
-  text-decoration: underline;
-}
-
 ul.data {
   list-style: none;
   padding: 0;
