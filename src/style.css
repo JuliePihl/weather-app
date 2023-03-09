@@ -69,6 +69,12 @@ body {
   max-width: max-content;
   color: rgba(41, 39, 39, 0.884);
   text-align: center;
+  transition: all 100ms ease-in-out;
+}
+
+.location-btn:hover {
+  color: #c9d1d3;
+  background-color: rgba(41, 39, 39, 0.884);
 }
 
 .mid-section {
@@ -88,7 +94,7 @@ body {
 
 ul.currentDate {
   position: relative;
-  top: -6px;
+  bottom: -5px;
   left: 2px;
   font-size: 14px;
   list-style: none;
@@ -117,17 +123,39 @@ ul.currentDate {
 ul.data {
   list-style: none;
   padding: 0;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .weather-icon {
   width: 110px;
+  position: relative;
+  bottom: 18px;
 }
 
 .weather-description {
-  font-size: 12px;
+  font-size: 13px;
+  position: relative;
+  bottom: 30px;
 }
 
+.bottom-section {
+  margin-top: 30px;
+}
+.forecast-icon {
+  width: 60px;
+}
+
+.forecast-day {
+  font-weight: bold;
+}
+
+.forecast-max-temp {
+  font-size: small;
+}
+
+.forecast-min-temp {
+  font-size: small;
+}
 .code-link {
   margin-top: 10px;
   font-size: small;

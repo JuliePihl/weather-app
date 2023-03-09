@@ -82,21 +82,21 @@ function showForecast(response) {
         `
     <div class="col-2">
       <div class="forecast-day">${formatDay(forecastDay.time)}</div>
-      <img
+      <img class="forecast-icon"
         src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
           forecastDay.condition.icon
         }.png"
         alt=""
-        width="42"
+        width="70"
       />
       <div class="forecast-temperatures">
         <span class="forecast-max-temp"> ${Math.round(
           forecastDay.temperature.maximum
-        )} </span>
+        )}° </span>
           |
         <span class="forecast-min-temp"> ${Math.round(
           forecastDay.temperature.minimum
-        )} </span>
+        )}° </span>
       </div>
     </div>
     `;
